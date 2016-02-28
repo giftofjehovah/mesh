@@ -1,0 +1,122 @@
+$background-color:#292929;
+$hexagon-color: #f6df0e;
+$color-A: #8c13fb;
+$color-B: #ff0080;
+$answer-color: #35e2f2;
+
+body
+{
+	background:$background-color;
+}
+main
+{
+	margin: 0 auto;
+	width: 27%;
+}
+
+.hex 
+{
+	float: left;
+    margin-right: -26px;
+    margin-bottom: -50px;
+    .left
+    {
+    	float: left;
+	    width: 0;
+	    border-right: 30px solid $hexagon-color;
+	    border-top: 52px solid transparent;
+	    border-bottom: 52px solid transparent;
+	}
+    .middle
+    {
+    	float: left;
+	    width: 60px;
+	    height: 104px;
+	    background: $hexagon-color;
+	    text-align: center;
+	 	line-height: 100px;
+	 	font-size: 60px;
+  		
+    }
+    .right
+    {
+    	float: left;
+	    width: 0;
+	    border-left: 30px solid $hexagon-color;
+	    border-top: 52px solid transparent;
+	    border-bottom: 52px solid transparent;
+    }
+    &.even
+    {
+    	margin-top: 53px;
+    }
+}
+.empty
+{
+	@extend .hex;
+	.left
+	{
+		border-right: 30px solid transparent;	
+	}
+	.middle
+	{
+		background: transparent;
+	}
+	.right
+	{
+		border-left: 30px solid transparent;
+	}
+}
+.colorA
+{
+	@extend .hex;
+	.left
+	{
+		border-right: 30px solid $color-A;	
+	}
+	.middle
+	{
+		background: $color-A;
+	}
+	.right
+	{
+		border-left: 30px solid $color-A;
+	}
+}
+.colorB
+{
+	@extend .hex;
+	.left
+	{
+		border-right: 30px solid $color-B;	
+	}
+	.middle
+	{
+		background: $color-B;
+	}
+	.right
+	{
+		border-left: 30px solid $color-B;
+	}
+}
+.answer
+{
+	@extend .hex;
+	.left
+	{
+		border-right: 30px solid $answer-color;	
+	}
+	.middle
+	{
+		background: $answer-color;
+	}
+	.right
+	{
+		border-left: 30px solid $answer-color;
+	}
+}
+.hex-row 
+{
+    clear: left;
+}
+
