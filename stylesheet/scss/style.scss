@@ -13,6 +13,7 @@ main
 	margin: 0 auto;
 	width: 310px;
 	border: 1px solid white;
+	height: 650px;
 }
 
 .hex 
@@ -102,7 +103,7 @@ main
 		border-left: 30px solid $color-B;
 	}
 }
-.answer
+#answer
 {
 	@extend .hex;
 	.left

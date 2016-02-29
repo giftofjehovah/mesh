@@ -2,19 +2,116 @@ $(function()
 {
     console.log("Lets Go!");
 
-    console.log(generate5Number(5));
-    $(".drop").droppable(
-    {
-        accept: "#drag"
-    });
-    $("#drag").draggable(
-    {
-    	containment: ".drop",
-        snap: true,
-        snapTolerance: 5
-    });
-   
+
+    // createNumberHex("answer");
+    addDrag(createNumberHex("answer"));
+    addDrag(createNumberHex("numbers"));
+
 })
+
+var generateNumber = 
+{
+    two: generate2Number,
+    three: generate3Number,
+    four: generate4Number,
+    five: generate5Number
+}
+
+var hexagon = 
+{
+    addDragEvent: addDrag,
+    randomGird: randomGird,
+    createDropEvent: createDrop,
+    createHex: createNumberHex
+}
+
+function createAnswer()
+{
+    // hexagon.createHex()
+}
+
+function createDrop(className, scopeName)
+{
+    $("." + className).droppable(
+    {
+        scope: scopeName
+    });
+}
+
+function addDrag(idName)
+{
+    var random;
+    var top, left;
+    if (idName == "answer")
+    {
+        random = 6;
+    }
+    else
+    {
+        random = hexagon.randomGird();
+
+    }
+    left = $("#" + random).position().left;
+    if (random == 1 || random == 3 || random == 6 || random == 9 || random == 12)
+    {
+        top = $("#" + random).position().top + 53;
+
+    }
+    else
+    {
+        top = $("#" + random).position().top;
+    }
+    console.log($("#" + idName));
+    $("#" + idName).draggable(
+    {
+        containment: "main",
+        snap: ".hex",
+        snapTolerance: 50,
+        snapMode: "inner",
+        revert: "invalid",
+        revertDuration: 100,
+        // scope: "a",
+        create: function(event, ui)
+        {
+            $('#' + idName).css(
+            {
+                position: 'absolute',
+                top: top,
+                left: left
+            });
+        }
+    })
+}
+
+function randomGird()
+{
+    return Math.floor(Math.random() * 13) + 1;
+}
+var n = 0;
+
+function createNumberHex(type)
+{
+    var className;
+    if (type == "answer")
+    {
+        className = "answer";
+        id = "answer";
+        var hex = $("<div>").addClass("hex").attr("id", className);
+    }
+    else
+    {
+        className = "colorA";
+        id = "n" + n;
+        var hex = $("<div>").addClass("hex").addClass(className).attr("id", id);
+    }
+
+    $("<div>").addClass("left").appendTo(hex);
+    $("<div>").addClass("middle").appendTo(hex);
+    $("<div>").addClass("right").appendTo(hex);
+    hex.appendTo($('main'));
+    n++;
+    return id;
+}
 
 function generate5Number(number)
 {
