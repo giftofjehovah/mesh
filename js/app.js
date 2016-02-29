@@ -1,5 +1,5 @@
 var n = 0;
-var countNumber = [1,2,3,4,5,7,8,9,10,11,12,13];
+var countNumber = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13];
 
 $(function()
 {
@@ -7,40 +7,70 @@ $(function()
 
 
     // createNumberHex("answer");
+    hexagon.createDropEvent("hex","hex")
     addDrag(createNumberHex("answer"));
     hexagon.setOfNumbers(4);
+    fillHexWithNumbers(4);
+    $('#answer .middle').text(1);
+
 
 })
 
-var generateNumber = 
-{
+var generateNumber = {
     two: generate2Number,
     three: generate3Number,
     four: generate4Number,
     five: generate5Number
 }
 
-var hexagon = 
-{
+var hexagon = {
     addDragEvent: addDrag,
     randomGird: randomGird,
     createDropEvent: createDrop,
     createHex: createNumberHex,
-    setOfNumbers: setOfNumbers
+    setOfNumbers: setOfNumbers,
+    fillHexWithNumbers: fillHexWithNumbers
+}
+
+function fillHexWithNumbers(set)
+{
+	var filled = document.getElementsByClassName("filled");
+	var numbers;
+	switch(set)
+	{
+		case 2:
+		numbers = generateNumber.two(1)
+		break;
+		case 3:
+		numbers = generateNumber.three(1);
+		break;
+		case 4:
+		numbers = generateNumber.four(1);
+		break;
+		case 5:
+		numbers = generateNumber.five(1);
+		break;
+	}
+	numbers.forEach(function(number,i)
+	{
+		$('#n'+i+' .middle').text(number);	
+	})
+
 }
 
 function resetArray()
 {
-	countNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+    countNumber = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13];
+    n = 0;
 }
 
 function setOfNumbers(set)
 {
-	for(i=0;i<set;i++)
-	{
-		hexagon.addDragEvent(hexagon.createHex("numbers"));
-	}
-	countNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+    for (i = 0; i < set; i++)
+    {
+        hexagon.addDragEvent(hexagon.createHex("numbers"));
+    }
+    resetArray();
 }
 
 function createDrop(className, scopeName)
@@ -62,19 +92,17 @@ function addDrag(idName)
     else
     {
         random = hexagon.randomGird();
-
     }
     left = $("#" + random).position().left;
     if (random == 1 || random == 3 || random == 6 || random == 9 || random == 12)
     {
         top = $("#" + random).position().top + 53;
-
     }
     else
     {
         top = $("#" + random).position().top;
     }
-    console.log($("#" + idName));
+    // console.log($("#" + idName));
     $("#" + idName).draggable(
     {
         containment: "main",
@@ -83,7 +111,7 @@ function addDrag(idName)
         snapMode: "inner",
         revert: "invalid",
         revertDuration: 100,
-        // scope: "a",
+        scope: "hex",
         create: function(event, ui)
         {
             $('#' + idName).css(
@@ -98,9 +126,8 @@ function addDrag(idName)
 
 function randomGird()
 {
-	
-	var index = Math.floor(Math.random() * countNumber.length);
-	var gird = countNumber.splice(index,1)[0];
+    var index = Math.floor(Math.random() * countNumber.length);
+    var gird = countNumber.splice(index, 1)[0];
     return gird;
 }
 
@@ -116,16 +143,26 @@ function createNumberHex(type)
     }
     else
     {
-        className = "colorA";
+    	var random = Math.floor(Math.random() * 2);
+    	if(random==1)
+    	{
+    		className = "colorA";
+    	}
+    	else
+    	{
+    		className = "colorB";
+    	}
         id = "n" + n;
+        n++;
         var hex = $("<div>").addClass("hex").addClass(className).attr("id", id);
+        // hex = hex.addClass("filled");
     }
 
     $("<div>").addClass("left").appendTo(hex);
     $("<div>").addClass("middle").appendTo(hex);
     $("<div>").addClass("right").appendTo(hex);
     hex.appendTo($('main'));
-    n++;
+    
     return id;
 }
 
