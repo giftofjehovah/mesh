@@ -3,12 +3,13 @@ body {
 
 main {
   margin: 0 auto;
-  width: 27%; }
+  width: 310px;
+  border: 1px solid white; }
 
 .hex, .empty, .colorA, .colorB, .answer {
   float: left;
   margin-right: -26px;
-  margin-bottom: -50px; }
+  margin-bottom: -49px; }
   .hex .left, .empty .left, .colorA .left, .colorB .left, .answer .left {
     float: left;
     width: 0;
@@ -42,14 +43,16 @@ main {
 .colorA .left {
   border-right: 30px solid #8c13fb; }
 .colorA .middle {
-  background: #8c13fb; }
+  background: #8c13fb;
+  color: #ff0080; }
 .colorA .right {
   border-left: 30px solid #8c13fb; }
 
 .colorB .left {
   border-right: 30px solid #ff0080; }
 .colorB .middle {
-  background: #ff0080; }
+  background: #ff0080;
+  color: #8c13fb; }
 .colorB .right {
   border-left: 30px solid #ff0080; }
 

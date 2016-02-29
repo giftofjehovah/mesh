@@ -11,14 +11,15 @@ body
 main
 {
 	margin: 0 auto;
-	width: 27%;
+	width: 310px;
+	border: 1px solid white;
 }
 
 .hex 
 {
 	float: left;
     margin-right: -26px;
-    margin-bottom: -50px;
+    margin-bottom: -49px;
     .left
     {
     	float: left;
@@ -77,6 +78,7 @@ main
 	.middle
 	{
 		background: $color-A;
+		color: $color-B;
 	}
 	.right
 	{
@@ -93,6 +95,7 @@ main
 	.middle
 	{
 		background: $color-B;
+		color: $color-A;
 	}
 	.right
 	{
