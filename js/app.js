@@ -1,3 +1,6 @@
+var n = 0;
+var countNumber = [1,2,3,4,5,7,8,9,10,11,12,13];
+
 $(function()
 {
     console.log("Lets Go!");
@@ -5,7 +8,7 @@ $(function()
 
     // createNumberHex("answer");
     addDrag(createNumberHex("answer"));
-    addDrag(createNumberHex("numbers"));
+    hexagon.setOfNumbers(4);
 
 })
 
@@ -22,12 +25,22 @@ var hexagon =
     addDragEvent: addDrag,
     randomGird: randomGird,
     createDropEvent: createDrop,
-    createHex: createNumberHex
+    createHex: createNumberHex,
+    setOfNumbers: setOfNumbers
 }
 
-function createAnswer()
+function resetArray()
 {
-    // hexagon.createHex()
+	countNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+}
+
+function setOfNumbers(set)
+{
+	for(i=0;i<set;i++)
+	{
+		hexagon.addDragEvent(hexagon.createHex("numbers"));
+	}
+	countNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13];
 }
 
 function createDrop(className, scopeName)
@@ -85,9 +98,12 @@ function addDrag(idName)
 
 function randomGird()
 {
-    return Math.floor(Math.random() * 13) + 1;
+	
+	var index = Math.floor(Math.random() * countNumber.length);
+	var gird = countNumber.splice(index,1)[0];
+    return gird;
 }
-var n = 0;
+
 
 function createNumberHex(type)
 {
