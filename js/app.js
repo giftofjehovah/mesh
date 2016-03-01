@@ -29,6 +29,57 @@ var hexagon = {
     fillHexWithNumbers: fillHexWithNumbers
 }
 
+function addDropToHex()
+{
+	$('.filled').droppable(
+	{
+		scope: "hex",
+		accept: ".filled",
+		drop: function(event,ui)
+		{
+			var color1, color2;
+			var sum;
+			var number1 = Number($(event.target).text());
+			var number2 = Number($(ui.helper).text());
+			if($(event.target).hasClass("colorA"))
+			{
+				color1 = "colorA";
+			}
+			else
+			{
+				color1 = "colorB";
+			}
+			if($(ui.helper).hasClass("colorA"))
+			{
+				color2 = "colorA";
+			}
+			else
+			{
+				color2 = "colorB";
+			}
+			if(color1==color2)
+			{
+				console.log("true");
+				sum = number1+number2;	
+			}
+			else
+			{
+				console.log("false");
+				if(number1>number2)
+				{
+					sum = number1 - number2;
+				}
+				else
+				{
+					sum = number2-number1;
+				}
+			}
+			$(ui.helper).children('.middle').text(sum);
+			$(event.target).remove();
+		}
+	})
+}
+
 function newSet(no)
 {
 	var answer = Number($('#answer .middle').text());
@@ -40,6 +91,16 @@ function newSet(no)
     } 
     hexagon.setOfNumbers(no);
     fillHexWithNumbers(no);
+    addChangeColor();
+    addDropToHex();
+}
+
+function addChangeColor()
+{
+	$('.filled').dblclick(function()
+	{
+		$(this).toggleClass("colorA colorB");
+	})
 }
 
 function getAnswer()
@@ -91,7 +152,7 @@ function createDrop(className, scopeName)
 {
     $("." + className).droppable(
     {
-        scope: scopeName
+        scope: scopeName,
     });
 }
 
@@ -99,13 +160,16 @@ function addDrag(idName)
 {
     var random;
     var top, left;
+    var scope1;
     if (idName == "answer")
     {
         random = 6;
+        scope1 = "answer";
     }
     else
     {
         random = hexagon.randomGird();
+        scope1 = "hex";
     }
     left = $("#" + random).position().left;
     if (random == 1 || random == 3 || random == 6 || random == 9 || random == 12)
@@ -125,7 +189,8 @@ function addDrag(idName)
         snapMode: "inner",
         revert: "invalid",
         revertDuration: 100,
-        scope: "hex",
+        scope: scope1,
+        stack: ".filled",
         create: function(event, ui)
         {
             $('#' + idName).css(
@@ -169,7 +234,7 @@ function createNumberHex(type)
         id = "n" + n;
         n++;
         var hex = $("<div>").addClass("hex").addClass(className).attr("id", id);
-        // hex = hex.addClass("filled");
+        hex = hex.addClass("filled");
     }
 
     $("<div>").addClass("left").appendTo(hex);
