@@ -6,13 +6,10 @@ $(function()
     console.log("Lets Go!");
 
 
-    // createNumberHex("answer");
-    hexagon.createDropEvent("hex","hex")
-    addDrag(createNumberHex("answer"));
-    hexagon.setOfNumbers(4);
-    fillHexWithNumbers(4);
-    $('#answer .middle').text(1);
-
+    newSet(3);
+    
+    
+    
 
 })
 
@@ -32,23 +29,40 @@ var hexagon = {
     fillHexWithNumbers: fillHexWithNumbers
 }
 
+function newSet(no)
+{
+	var answer = Number($('#answer .middle').text());
+	hexagon.createDropEvent("hex","hex");
+    addDrag(createNumberHex("answer"));
+    if(answer < 1)
+    {
+    	$('#answer .middle').text(1);
+    } 
+    hexagon.setOfNumbers(no);
+    fillHexWithNumbers(no);
+}
+
+function getAnswer()
+{
+	return Number($('#answer .middle').text());
+}
+
 function fillHexWithNumbers(set)
 {
-	var filled = document.getElementsByClassName("filled");
 	var numbers;
 	switch(set)
 	{
 		case 2:
-		numbers = generateNumber.two(1)
+		numbers = generateNumber.two(getAnswer())
 		break;
 		case 3:
-		numbers = generateNumber.three(1);
+		numbers = generateNumber.three(getAnswer());
 		break;
 		case 4:
-		numbers = generateNumber.four(1);
+		numbers = generateNumber.four(getAnswer());
 		break;
 		case 5:
-		numbers = generateNumber.five(1);
+		numbers = generateNumber.five(getAnswer());
 		break;
 	}
 	numbers.forEach(function(number,i)
@@ -255,5 +269,6 @@ function generate2Number(number)
             addition();
         }
     }
+    
     return [firstNo, secondNo];
 }
