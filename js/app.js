@@ -4,12 +4,9 @@ var countNumber = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13];
 $(function()
 {
     console.log("Lets Go!");
+    var random = Math.floor(Math.random()*4)+2;
 
-
-    newSet(3);
-    
-    
-    
+    newSet(random); 
 
 })
 
@@ -27,6 +24,13 @@ var hexagon = {
     createHex: createNumberHex,
     setOfNumbers: setOfNumbers,
     fillHexWithNumbers: fillHexWithNumbers
+}
+
+function findWin()
+{
+	var numberOfHexLeft = $('.filled');
+	console.log(numberOfHexLeft);
+	console.log(typeof(numberOfHexLeft));
 }
 
 function addDropToHex()
@@ -59,12 +63,10 @@ function addDropToHex()
 			}
 			if(color1==color2)
 			{
-				console.log("true");
 				sum = number1+number2;	
 			}
 			else
 			{
-				console.log("false");
 				if(number1>number2)
 				{
 					sum = number1 - number2;
@@ -73,6 +75,10 @@ function addDropToHex()
 				{
 					sum = number2-number1;
 				}
+			}
+			if(sum==0)
+			{
+				$(ui.helper).remove();
 			}
 			$(ui.helper).children('.middle').text(sum);
 			$(event.target).remove();
