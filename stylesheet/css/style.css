@@ -6,17 +6,17 @@ main {
   width: 310px;
   height: 650px; }
 
-.hex, .empty, .colorA, .colorB, #answer {
+.hex, .empty, .colorA, .colorB, #answer, .answer {
   float: left;
   margin-right: -26px;
   margin-bottom: -49px; }
-  .hex .left, .empty .left, .colorA .left, .colorB .left, #answer .left {
+  .hex .left, .empty .left, .colorA .left, .colorB .left, #answer .left, .answer .left {
     float: left;
     width: 0;
     border-right: 30px solid #f6df0e;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent; }
-  .hex .middle, .empty .middle, .colorA .middle, .colorB .middle, #answer .middle {
+  .hex .middle, .empty .middle, .colorA .middle, .colorB .middle, #answer .middle, .answer .middle {
     float: left;
     width: 60px;
     height: 104px;
@@ -25,13 +25,13 @@ main {
     line-height: 100px;
     font-size: 54px;
     font-family: 'Roboto'; }
-  .hex .right, .empty .right, .colorA .right, .colorB .right, #answer .right {
+  .hex .right, .empty .right, .colorA .right, .colorB .right, #answer .right, .answer .right {
     float: left;
     width: 0;
     border-left: 30px solid #f6df0e;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent; }
-  .hex.even, .even.empty, .even.colorA, .even.colorB, .even#answer {
+  .hex.even, .even.empty, .even.colorA, .even.colorB, .even#answer, .even.answer {
     margin-top: 53px; }
 
 .empty .left {
@@ -62,6 +62,14 @@ main {
 #answer .middle {
   background: #35e2f2; }
 #answer .right {
+  border-left: 30px solid #35e2f2; }
+
+.answer .left {
+  border-right: 30px solid #35e2f2; }
+.answer .middle {
+  background: #35e2f2;
+  color: black; }
+.answer .right {
   border-left: 30px solid #35e2f2; }
 
 .hex-row {

@@ -4,9 +4,10 @@ var countNumber = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13];
 $(function()
 {
     console.log("Lets Go!");
-    var random = Math.floor(Math.random()*4)+2;
+   
 
-    newSet(random); 
+    newSet(randomSet()); 
+  
 
 })
 
@@ -26,11 +27,56 @@ var hexagon = {
     fillHexWithNumbers: fillHexWithNumbers
 }
 
+function randomSet()
+{
+	 return random = Math.floor(Math.random()*4)+2;
+}
+
+function answerMatch(sum)
+{
+	var oAns = Number($('#answer .middle').text());
+	if(oAns==sum)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 function findWin()
 {
 	var numberOfHexLeft = $('.filled');
-	console.log(numberOfHexLeft);
-	console.log(typeof(numberOfHexLeft));
+	var numberOfAnswerLeft = $('.answer');
+	if(numberOfHexLeft.length==1 || (numberOfHexLeft.length==1 && numberOfAnswerLeft.length>0) || numberOfHexLeft.length==0)
+	{
+		if(numberOfAnswerLeft.length>0)
+		{
+			var newAnswer = Number($('#answer .middle').text())+numberOfAnswerLeft.length;
+			$('#answer .middle').text(newAnswer);
+			$('.answer').remove(".answer");
+			// newSet(randomSet());
+			setTimeout(function(){ newSet(randomSet()); }, 300);
+		}
+		else if(numberOfHexLeft.length == 1 && numberOfAnswerLeft.length>0)
+		{
+			// newSet(randomSet());
+			setTimeout(function(){ newSet(randomSet()); }, 300);
+			return Number(numberOfHexLeft.first().text());	
+		}
+		else if(numberOfHexLeft.length == 1)
+		{
+			// newSet(randomSet());
+			setTimeout(function(){ newSet(randomSet()); }, 300);
+			return Number(numberOfHexLeft.first().text());	
+		}
+		else if(numberOfHexLeft.length == 0)
+		{
+			// newSet(randomSet());
+			setTimeout(function(){ newSet(randomSet()); }, 300);
+		}
+	}
 }
 
 function addDropToHex()
@@ -80,8 +126,19 @@ function addDropToHex()
 			{
 				$(ui.helper).remove();
 			}
+			else if(answerMatch(sum))
+			{
+				$(ui.helper).removeClass("colorA").removeClass("colorB").removeClass("filled").addClass("answer");
+			}
 			$(ui.helper).children('.middle').text(sum);
 			$(event.target).remove();
+			var pointsLost = findWin();
+			if(pointsLost)
+			{
+				var newNumber = Number($('#answer .middle').text()) - pointsLost;
+				$('#answer .middle').text(newNumber);
+			}
+			
 		}
 	})
 }
@@ -90,9 +147,9 @@ function newSet(no)
 {
 	var answer = Number($('#answer .middle').text());
 	hexagon.createDropEvent("hex","hex");
-    addDrag(createNumberHex("answer"));
     if(answer < 1)
     {
+    	addDrag(createNumberHex("answer"));
     	$('#answer .middle').text(1);
     } 
     hexagon.setOfNumbers(no);

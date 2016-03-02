@@ -118,6 +118,23 @@ main
 		border-left: 30px solid $answer-color;
 	}
 }
+.answer
+{
+	@extend .hex;
+	.left
+	{
+		border-right: 30px solid $answer-color;	
+	}
+	.middle
+	{
+		background: $answer-color;
+		color: black;
+	}
+	.right
+	{
+		border-left: 30px solid $answer-color;
+	}
+}
 .hex-row 
 {
     clear: left;
