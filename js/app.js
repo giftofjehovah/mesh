@@ -4,11 +4,9 @@ var countNumber = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13];
 $(function()
 {
     console.log("Lets Go!");
-   
-
+   	
     newSet(randomSet()); 
   
-
 })
 
 var generateNumber = {
@@ -62,12 +60,14 @@ function findWin()
 		else if(numberOfHexLeft.length == 1 && numberOfAnswerLeft.length>0)
 		{
 			// newSet(randomSet());
+			$('.filled').first().remove('.filled');
 			setTimeout(function(){ newSet(randomSet()); }, 300);
 			return Number(numberOfHexLeft.first().text());	
 		}
 		else if(numberOfHexLeft.length == 1)
 		{
 			// newSet(randomSet());
+			$('.filled').first().remove('.filled');
 			setTimeout(function(){ newSet(randomSet()); }, 300);
 			return Number(numberOfHexLeft.first().text());	
 		}
