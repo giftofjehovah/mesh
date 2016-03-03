@@ -262,7 +262,7 @@ function addDrag(idName)
     {
         containment: "main",
         snap: ".hex",
-        snapTolerance: 50,
+        snapTolerance: 30,
         snapMode: "inner",
         revert: function(event)
         {
