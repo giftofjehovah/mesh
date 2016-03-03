@@ -49,6 +49,7 @@ function findWin()
 	var numberOfAnswerLeft = $('.answer');
 	if(numberOfHexLeft.length==1 || (numberOfHexLeft.length==1 && numberOfAnswerLeft.length>0) || numberOfHexLeft.length==0)
 	{
+
 		if(numberOfAnswerLeft.length>0)
 		{
 			var newAnswer = Number($('#answer .middle').text())+numberOfAnswerLeft.length;
@@ -76,6 +77,7 @@ function findWin()
 			// newSet(randomSet());
 			setTimeout(function(){ newSet(randomSet()); }, 300);
 		}
+
 	}
 }
 
@@ -144,6 +146,11 @@ function addDropToHex()
 			{
 				var newNumber = Number($('#answer .middle').text()) - pointsLost;
 				$('#answer .middle').text(newNumber);
+				if(Number($('#answer .middle').text())<1)
+				{
+					alert("You lose");
+					document.location.reload(true);
+				}
 			}
 			
 		}
@@ -281,7 +288,6 @@ function addDrag(idName)
             });
         }
     })
-    console.log($('#answer'));
     $('#answer').draggable("disable");
     $('#answer').droppable(
 	{
