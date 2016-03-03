@@ -129,6 +129,13 @@ function addDropToHex()
 			else if(answerMatch(sum))
 			{
 				$(ui.helper).removeClass("colorA").removeClass("colorB").removeClass("filled").addClass("answer");
+				$(ui.helper).draggable("disable");
+				$(ui.helper).droppable("destroy");
+				$(ui.helper).droppable(
+				{
+					scope: "hex",
+					accept: ".filled"
+				});
 			}
 			$(ui.helper).children('.middle').text(sum);
 			$(event.target).remove();
@@ -243,17 +250,27 @@ function addDrag(idName)
     {
         top = $("#" + random).position().top;
     }
-    // console.log($("#" + idName));
+ 
     $("#" + idName).draggable(
     {
         containment: "main",
         snap: ".hex",
         snapTolerance: 50,
         snapMode: "inner",
-        revert: "invalid",
+        revert: function(event)
+        {
+        	if($(event).hasClass("answer") || $(event).is("#answer"))
+        	{
+        		return true;
+        	}
+        	else
+        	{
+        		return false;
+        	}
+        },
         revertDuration: 100,
         scope: scope1,
-        stack: ".filled",
+        zIndex: 100,
         create: function(event, ui)
         {
             $('#' + idName).css(
@@ -264,6 +281,13 @@ function addDrag(idName)
             });
         }
     })
+    console.log($('#answer'));
+    $('#answer').draggable("disable");
+    $('#answer').droppable(
+	{
+		scope: "hex",
+		accept: ".filled"
+	});
 }
 
 function randomGird()
