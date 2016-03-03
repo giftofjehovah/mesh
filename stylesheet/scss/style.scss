@@ -7,12 +7,28 @@ $answer-color: #35e2f2;
 body
 {
 	background:$background-color;
+	display: flex;
+}
+aside
+{
+	width: 50%;
+	
+}
+#timer
+{
+	font-size: 50px;
+	text-align: center;
+	color: white;
 }
 main
 {
 	margin: 0 auto;
 	width: 310px;
 	height: 650px;
+}
+.danger
+{
+	background:#e74c3c;
 }
 
 .hex 

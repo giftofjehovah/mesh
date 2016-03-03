@@ -1,10 +1,22 @@
 body {
-  background: #292929; }
+  background: #292929;
+  display: flex; }
+
+aside {
+  width: 50%; }
+
+#timer {
+  font-size: 50px;
+  text-align: center;
+  color: white; }
 
 main {
   margin: 0 auto;
   width: 310px;
   height: 650px; }
+
+.danger {
+  background: #e74c3c; }
 
 .hex, .empty, .colorA, .colorB, #answer, .answer {
   float: left;

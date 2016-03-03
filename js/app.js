@@ -6,6 +6,7 @@ $(function()
     console.log("Lets Go!");
    	
     newSet(randomSet()); 
+    
   
 })
 
@@ -296,6 +297,14 @@ function addDrag(idName)
 	});
 }
 
+function danger()
+{
+	var backgroundInterval = setInterval(function()
+	{
+		$('body').toggleClass("danger");
+	},400);
+}
+
 function randomGird()
 {
     var index = Math.floor(Math.random() * countNumber.length);
@@ -395,7 +404,20 @@ function generate3Number(number)
 
 function generate2Number(number)
 {
-    var firstNo = Math.floor(Math.random() * 9) + 1;
+	var base = 9;
+	if(number>9)
+	{
+		if(number%2==0)
+		{
+			base = number / 2
+		}
+		else
+		{
+			base = (number+1)/2
+		}
+		
+	}
+    var firstNo = Math.floor(Math.random() * base) + 1;
     var operator = Math.floor(Math.random() * 2);
     var secondNo;
 
