@@ -1,5 +1,5 @@
 body {
-  background: #292929;
+  background: #311E10;
   display: flex; }
 
 aside {
@@ -25,14 +25,14 @@ main {
   .hex .left, .empty .left, .colorA .left, .colorB .left, #answer .left, .answer .left {
     float: left;
     width: 0;
-    border-right: 30px solid #f6df0e;
+    border-right: 30px solid #A5FFD6;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent; }
   .hex .middle, .empty .middle, .colorA .middle, .colorB .middle, #answer .middle, .answer .middle {
     float: left;
     width: 60px;
     height: 104px;
-    background: #f6df0e;
+    background: #A5FFD6;
     text-align: center;
     line-height: 100px;
     font-size: 54px;
@@ -40,7 +40,7 @@ main {
   .hex .right, .empty .right, .colorA .right, .colorB .right, #answer .right, .answer .right {
     float: left;
     width: 0;
-    border-left: 30px solid #f6df0e;
+    border-left: 30px solid #A5FFD6;
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent; }
   .hex.even, .even.empty, .even.colorA, .even.colorB, .even#answer, .even.answer {
@@ -54,35 +54,35 @@ main {
   border-left: 30px solid transparent; }
 
 .colorA .left {
-  border-right: 30px solid #8c13fb; }
+  border-right: 30px solid #274690; }
 .colorA .middle {
-  background: #8c13fb;
-  color: #ff0080; }
+  background: #274690;
+  color: #F45B69; }
 .colorA .right {
-  border-left: 30px solid #8c13fb; }
+  border-left: 30px solid #274690; }
 
 .colorB .left {
-  border-right: 30px solid #ff0080; }
+  border-right: 30px solid #F45B69; }
 .colorB .middle {
-  background: #ff0080;
-  color: #8c13fb; }
+  background: #F45B69;
+  color: #274690; }
 .colorB .right {
-  border-left: 30px solid #ff0080; }
+  border-left: 30px solid #F45B69; }
 
 #answer .left {
-  border-right: 30px solid #35e2f2; }
+  border-right: 30px solid #F4F0F5; }
 #answer .middle {
-  background: #35e2f2; }
+  background: #F4F0F5; }
 #answer .right {
-  border-left: 30px solid #35e2f2; }
+  border-left: 30px solid #F4F0F5; }
 
 .answer .left {
-  border-right: 30px solid #35e2f2; }
+  border-right: 30px solid #F4F0F5; }
 .answer .middle {
-  background: #35e2f2;
-  color: black; }
+  background: #F4F0F5;
+  color: #311E10; }
 .answer .right {
-  border-left: 30px solid #35e2f2; }
+  border-left: 30px solid #F4F0F5; }
 
 .hex-row {
   clear: left; }

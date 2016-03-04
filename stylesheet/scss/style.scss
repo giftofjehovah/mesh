@@ -1,8 +1,14 @@
-$background-color:#292929;
-$hexagon-color: #f6df0e;
-$color-A: #8c13fb;
-$color-B: #ff0080;
-$answer-color: #35e2f2;
+// $background-color:#292929;
+// $hexagon-color: #f6df0e;
+// $color-A: #8c13fb;
+// $color-B: #ff0080;
+// $answer-color: #35e2f2;
+
+$background-color:#311E10;
+$hexagon-color: #A5FFD6;
+$color-A: #274690;
+$color-B: #F45B69;
+$answer-color: #F4F0F5;
 
 body
 {
@@ -144,7 +150,7 @@ main
 	.middle
 	{
 		background: $answer-color;
-		color: black;
+		color: $background-color;
 	}
 	.right
 	{
